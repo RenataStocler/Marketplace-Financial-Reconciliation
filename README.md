@@ -19,7 +19,10 @@ Durante esse processo podem ocorrer diversos eventos financeiros, como:
 
 Quando esses descontos superam o valor disponível para liquidação, é registrado um **saldo devedor** para o vendedor. Esse saldo permanece em aberto e poderá ser compensado automaticamente nas liquidações futuras, conforme novos créditos forem gerados.
 
-Após anos de operação, tornou-se necessário reconstruir o histórico financeiro completo dos vendedores, validar os saldos operacionais e reconciliá-los com os registros da contabilidade.
+**O DESAFIO**
+
+Após mais de dez anos de operação, o marketplace identificou inconsistências entre os saldos financeiros registrados na operação e aqueles registrados na contabilidade.
+O principal desafio consiste em reconstruir o histórico financeiro de cada vendedor para identificar diferenças e apoiar o processo de reconciliação.
 
 Este projeto demonstra como técnicas de análise de dados utilizando SQL podem apoiar esse processo.
 
@@ -43,47 +46,21 @@ Ao final do estudo, será possível:
 
 O projeto utiliza três bases de dados fictícias geradas aleatoriamente por IA.
 
-## Base Operacional
+Base de Dados
 
-Estrutura criada
-
-Contém 400 vendedores fictícios.
--id_vendedor
--nome_vendedor
--estado_brasileiro
-
-
-Contém 138.557 movimentações operacionais.
--id_vendedor
--nome_vendedor
--estado_brasileiro
--canal_pagamento
--referencia
-
-Contém 57.600 registros contábeis, correspondentes a 400 vendedores durante 144 meses.
--id_vendedor
--referencia
--ajuste_devedor_contabil
--compensacao_contabil
--saldo_contabil_acumulado
+├── Cadastro de Vendedores
+    Contém 400 vendedores fictícios.
+    
+├── Movimentações Operacionais
+    Contém 138.557 movimentações operacionais.
+    
+└── Razão Contábil
+    Contém 57.600 registros contábeis, correspondentes a 400 vendedores durante 144 meses.
 
 
 Período
 
 A base abrange o período entre janeiro/2014 e dezembro/2025.
-
----
-
-## Razão Contábil
-
-Representa a contabilização das movimentações financeiras registradas pelo marketplace.
-
-Principais informações:
-
-- competência;
-- lançamentos de débito;
-- lançamentos de crédito;
-- saldo acumulado.
 
 ---
 
@@ -99,20 +76,14 @@ A documentação técnica do projeto está disponível na pasta **docs**.
 
 # Roadmap
 
-O projeto foi estruturado para acompanhar a evolução do aprendizado em SQL, simulando as etapas normalmente executadas em um processo real de reconciliação financeira.
+O projeto foi estruturado em etapas progressivas, reproduzindo a metodologia utilizada em processos reais de reconciliação financeira. Cada fase introduz novas técnicas de análise de dados necessárias para avançar na solução do problema.
 
-| Etapa | Descrição | Status |
-|--------|-----------|--------|
-| 01 | Exploração da Base Operacional | ⬜ |
-| 02 | Investigação das Movimentações Financeiras | ⬜ |
-| 03 | Análise Exploratória dos Ajustes Financeiros | ⬜ |
-| 04 | Construção do Extrato Financeiro dos Vendedores | ⬜ |
-| 05 | Construção do Razão Operacional | ⬜ |
-| 06 | Exploração do Razão Contábil | ⬜ |
-| 07 | Reconciliação entre Operação e Contabilidade | ⬜ |
-| 08 | Identificação das Divergências | ⬜ |
-| 09 | Consolidação dos Saldos Reconciliados | ⬜ |
-| 10 | Dashboard Gerencial | ⬜ |
+| Fase | Descrição |
+|--------|-----------|
+| 01 | Compreensão dos Dados
+| 02 | Análise Operacional
+| 03 | Modelagem Financeira
+| 04 | Reconciliação
 
 Cada etapa representa um avanço no projeto e também na aplicação de novos conceitos de SQL, desde consultas básicas até técnicas mais avançadas de análise de dados.
 
